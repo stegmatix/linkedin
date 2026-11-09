@@ -52,10 +52,8 @@ jobs:
           go-version: ${{ matrix.go-version }}
           cache: true
 
-      - name: Set up gotestfmt
-        uses: GoTestTools/gotestfmt-action@v2
-        with:
-          token: ${{ secrets.GITHUB_TOKEN }}
+      - name: Build gotestfmt for the runner architecture
+        run: go install github.com/gotesttools/gotestfmt/v2/cmd/gotestfmt@v2.5.0
 
       - name: Install libolm
         run: sudo apt-get install libolm-dev libolm3
